@@ -105,10 +105,10 @@ class StockAnalyzer:
             sentiments = []
             headlines = []
             
-            print("\nDEBUG - Processing articles:")
+            #print("\nDEBUG - Processing articles:")
             for i, article in enumerate(news[:5]):
-                print(f"\nDEBUG - Article {i + 1}:")
-                print(article)  # See each article's structure
+                #print(f"\nDEBUG - Article {i + 1}:")
+                #print(article)  # See each article's structure
                 
                 # Try direct access first
                 headline = article.get('title', '')
@@ -120,8 +120,8 @@ class StockAnalyzer:
                 if not description:
                     description = article.get('content', {}).get('description', '')
                 
-                print(f"DEBUG - Extracted headline: {headline}")
-                print(f"DEBUG - Extracted description: {description}")
+                #print(f"DEBUG - Extracted headline: {headline}")
+                #print(f"DEBUG - Extracted description: {description}")
                 
                 full_text = f"{headline} {description}".strip()
                 
@@ -129,7 +129,7 @@ class StockAnalyzer:
                     headlines.append(headline)
                     analysis = TextBlob(full_text)
                     sentiment = analysis.sentiment.polarity
-                    print(f"DEBUG - Sentiment score: {sentiment}")
+                    #print(f"DEBUG - Sentiment score: {sentiment}")
                     sentiments.append(sentiment)
 
             if not sentiments:
@@ -144,8 +144,8 @@ class StockAnalyzer:
                 "sentiment_summary": self._get_sentiment_category(avg_sentiment)
             }
             
-            print("\nDEBUG - Final sentiment result:")
-            print(result)
+            #print("\nDEBUG - Final sentiment result:")
+            #print(result)
             
             return result
             
@@ -227,7 +227,7 @@ class StockAnalyzer:
         if sentiment_data:
             prompt += self._format_sentiment_data(sentiment_data)
         
-        prompt += "\nBased on both financial metrics and recent news sentiment, is this a good investment at the current price? Keep it short and concise."
+        prompt += "\nBased on both financial metrics and recent news sentiment, is this a good investment at the current price? Keep it short and concise. Be sure to add a risk level, target price range, and recommendation."
         return prompt
 
     def _format_sentiment_data(self, sentiment_data):
