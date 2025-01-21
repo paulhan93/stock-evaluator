@@ -181,14 +181,14 @@ def main():
             for headline in sentiment_data['recent_headlines']:
                 print(f"- {headline}")
 
-        #recommendation = analyze_stock(stock_data, sentiment_data)
-        #if recommendation:
-        #   print("\nAI Recommendation:")
-        #   try:
-        #       print(recommendation['content'][0]['text'])
-        #   except (KeyError, IndexError) as e:
-        #       print("Error parsing recommendation")
-        #print("\n" + "-"*50 + "\n")
+        recommendation = analyze_stock(stock_data, sentiment_data)
+        if recommendation:
+           print("\nAI Recommendation:")
+           try:
+               print(recommendation['content'][0]['text'])
+           except (KeyError, IndexError) as e:
+               print("Error parsing recommendation")
+        print("\n" + "-"*50 + "\n")
 
 # main
 if __name__ == "__main__":
