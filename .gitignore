@@ -1,3 +1,9 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Existing entries
 venv/
 analysis_outputs/
 notes.txt
